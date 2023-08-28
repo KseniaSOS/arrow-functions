@@ -64,10 +64,20 @@ console.log(paul);
     },
   ];
 
-  const hasStrongSkills = student => {
-    let strongSkills = student.skills.filter(skill => skill.yrsExperience >= 5);
-    return strongSkills.length > 0;
-  };
+//  1-st Option
+//  const hasStrongSkills = student => {
+//     let strongSkills = student.skills.filter(skill => skill.yrsExperience >= 5);
+//     return strongSkills.length > 0;
+//   };
 
-  const candidstes =students.filter (hasStrongSkills);
-  console.log(candidstes);
+//   const candidates = students.filter (hasStrongSkills);
+//   console.log(candidates);
+
+// 2-d Option. more clear
+const has5yearsExp = skill => skill.yrsExperience >= 5;
+const hasStrongSkills = student => student.skills.filter(has5yearsExp).length > 0;
+const candidates = students.filter (hasStrongSkills);
+console.log(candidates);
+
+const candidatesName = candidates.map(candidat => [candidat.name]);
+console.log(candidatesName);
